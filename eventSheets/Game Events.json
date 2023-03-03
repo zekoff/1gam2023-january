@@ -1,0 +1,1434 @@
+{
+	"name": "Game Events",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Global Constants"
+		},
+		{
+			"eventType": "variable",
+			"name": "PaddleBounceMaxAngle",
+			"type": "number",
+			"initialValue": "60",
+			"comment": "How much variation in bounce angle there will be between a bounce from the exact center of the paddle and the outer edges. Larger numbers mean bigger angles relative to bouncing straight upwards.",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 294028847978205
+		},
+		{
+			"eventType": "variable",
+			"name": "PaddleDefaultSize",
+			"type": "number",
+			"initialValue": "250",
+			"comment": "Standard size of paddle.",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 935053834693803
+		},
+		{
+			"eventType": "variable",
+			"name": "PowerupDefaultTime",
+			"type": "number",
+			"initialValue": "20",
+			"comment": "Length of time in seconds that a powerup will last by default.",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 285546560206110
+		},
+		{
+			"eventType": "variable",
+			"name": "BallDefaultSpeed",
+			"type": "number",
+			"initialValue": "600",
+			"comment": "Default speed of a new ball.",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 658938782993982
+		},
+		{
+			"eventType": "comment",
+			"text": "Global Variables"
+		},
+		{
+			"eventType": "variable",
+			"name": "Lives",
+			"type": "number",
+			"initialValue": "2",
+			"comment": "Number of extra lives remaining.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 347485774091037
+		},
+		{
+			"eventType": "variable",
+			"name": "Score",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Player score, from picking up coins.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 316869613292828
+		},
+		{
+			"eventType": "variable",
+			"name": "BallAnimation",
+			"type": "string",
+			"initialValue": "Gorilla",
+			"comment": "The name of the animation selected for the ball. Different \"animations\" are different static animal images.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 314781915881019
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Controls",
+			"description": "Mouse and touchscreen controls for paddle.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-movement",
+							"objectClass": "Mouse",
+							"sid": 657951311666850
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Paddle",
+							"sid": 138991080799945,
+							"parameters": {
+								"x": "Mouse.X",
+								"y": "Paddle.Y"
+							}
+						}
+					],
+					"sid": 916447214050961
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-in-touch",
+							"objectClass": "Touch",
+							"sid": 241233459524686
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Paddle",
+							"sid": 955421757457613,
+							"parameters": {
+								"x": "Touch.X",
+								"y": "Paddle.Y"
+							}
+						}
+					],
+					"sid": 584959270502603
+				}
+			],
+			"sid": 712906326060609
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Ball",
+			"description": "Management of ball collisions and angle corrections.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Ball",
+							"sid": 512795569088049,
+							"parameters": {
+								"object": "Bricks"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Bricks",
+							"sid": 820550937612947,
+							"parameters": {
+								"instance-variable": "CurrentHp",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Bricks",
+							"sid": 408563102593803,
+							"parameters": {
+								"frame-number": "abs(Bricks.CurrentHp - 3)"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 573011288450108,
+							"parameters": {
+								"variable": "Score",
+								"value": "1"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 451234688241588,
+							"parameters": {
+								"audio-file": "Hit_hurt 18",
+								"loop": "not-looping",
+								"volume": "-10",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 596719440392984,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "evaluate-expression",
+									"objectClass": "System",
+									"sid": 618717885488806,
+									"parameters": {
+										"value": "Paddle.damageUp > 0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "Bricks",
+									"sid": 973181012290094,
+									"parameters": {
+										"instance-variable": "CurrentHp",
+										"value": "1"
+									}
+								},
+								{
+									"id": "set-animation-frame",
+									"objectClass": "Bricks",
+									"sid": 677648444694366,
+									"parameters": {
+										"frame-number": "abs(Bricks.CurrentHp - 3)"
+									}
+								}
+							],
+							"sid": 240960979115762
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "evaluate-expression",
+									"objectClass": "System",
+									"sid": 786447932539723,
+									"parameters": {
+										"value": "Bricks.CurrentHp >= 0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "bounce-off-object",
+									"objectClass": "Ball",
+									"sid": 222155436286959,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"object": "Bricks"
+									}
+								}
+							],
+							"sid": 840403989802854
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Bricks",
+									"sid": 182371282582866,
+									"parameters": {
+										"instance-variable": "CurrentHp",
+										"comparison": 3,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "Bricks",
+									"sid": 630013323814538
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 664849483251481,
+									"parameters": {
+										"object-to-create": "BrickBreakParticle",
+										"layer": "0",
+										"x": "Bricks.X",
+										"y": "Bricks.Y",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 298134334830073,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-last-created",
+											"objectClass": "System",
+											"sid": 171366269424985,
+											"parameters": {
+												"object": "BrickBreakParticle"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-default-color",
+											"objectClass": "BrickBreakParticle",
+											"sid": 840541101504639,
+											"parameters": {
+												"color": "rgbEx(random(255), random(255), random(255))"
+											}
+										}
+									],
+									"sid": 344943065963745
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 147158667779547,
+											"parameters": {
+												"first-value": "random(100)",
+												"comparison": 2,
+												"second-value": "20"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "Drop Pickup",
+											"sid": 613075616845251
+										}
+									],
+									"sid": 596390904355429
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Ball",
+							"sid": 441544281357579,
+							"parameters": {
+								"object": "Ball"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "bounce-off-object",
+							"objectClass": "Ball",
+							"sid": 719555866611236,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"object": "Ball"
+							}
+						}
+					],
+					"sid": 229739626069399,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Ball",
+							"sid": 631962334091594,
+							"parameters": {
+								"object": "DeathWall"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Ball",
+							"sid": 581068439533449
+						}
+					],
+					"sid": 498518976113270,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "evaluate-expression",
+									"objectClass": "System",
+									"sid": 159200074390210,
+									"parameters": {
+										"value": "Ball.Count < 2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 859745925691001,
+									"parameters": {
+										"variable": "Lives",
+										"value": "Lives - 1"
+									}
+								}
+							],
+							"sid": 692908017148857,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 463875044950483,
+											"parameters": {
+												"variable": "Lives",
+												"comparison": 5,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "Create Ball",
+											"sid": 103965398872739
+										}
+									],
+									"sid": 956944771930088
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "evaluate-expression",
+											"objectClass": "System",
+											"sid": 713344349798040,
+											"parameters": {
+												"value": "Lives < 0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "LivesText",
+											"sid": 375974645053749,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "LoseText",
+											"sid": 951122973016866,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "play",
+											"objectClass": "Audio",
+											"sid": 114032934865395,
+											"parameters": {
+												"audio-file": "Hit_hurt 21",
+												"loop": "not-looping",
+												"volume": "0",
+												"stereo-pan": "0",
+												"tag-optional": "\"\""
+											}
+										},
+										{
+											"id": "destroy",
+											"objectClass": "Paddle",
+											"sid": 186241024626202
+										},
+										{
+											"id": "destroy",
+											"objectClass": "Pickups",
+											"sid": 381309470807915
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 481147156940814,
+											"parameters": {
+												"seconds": "3"
+											}
+										},
+										{
+											"callFunction": "ResetGame",
+											"sid": 777513849153222
+										}
+									],
+									"sid": 402399634361021
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Ball",
+							"sid": 689009139622607,
+							"parameters": {
+								"object": "WinWall"
+							}
+						},
+						{
+							"id": "pick-all",
+							"objectClass": "System",
+							"sid": 496761411019139,
+							"parameters": {
+								"object": "Ball"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "WinGame",
+							"sid": 601232771651143
+						}
+					],
+					"sid": 820307636488208
+				}
+			],
+			"sid": 358043367458842
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Pickups",
+			"description": "Effects for various pickups (powerups and powerdowns).",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Paddle",
+							"sid": 482235576430343,
+							"parameters": {
+								"object": "Pickups"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "Pickups",
+							"sid": 856503981580436
+						}
+					],
+					"sid": 933875892771555
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Star",
+							"sid": 511314358390239,
+							"parameters": {
+								"object": "Paddle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 482413879109213,
+							"parameters": {
+								"audio-file": "Pickup_coin 7",
+								"loop": "not-looping",
+								"volume": "-20",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 335338685273703,
+							"parameters": {
+								"variable": "Score",
+								"value": "50"
+							}
+						}
+					],
+					"sid": 676426525298446
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "PaddleSizeUp",
+							"sid": 825202409288721,
+							"parameters": {
+								"object": "Paddle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Paddle",
+							"sid": 748428667940727,
+							"parameters": {
+								"instance-variable": "sizeUp",
+								"value": "PowerupDefaultTime"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Paddle",
+							"sid": 257502179974303,
+							"parameters": {
+								"instance-variable": "sizeDown",
+								"value": "0"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 426982314315794,
+							"parameters": {
+								"audio-file": "Powerup 10",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 439456374405917
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "PaddleSizeDown",
+							"sid": 127537861518421,
+							"parameters": {
+								"object": "Paddle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Paddle",
+							"sid": 663786450929414,
+							"parameters": {
+								"instance-variable": "sizeDown",
+								"value": "PowerupDefaultTime"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Paddle",
+							"sid": 369911613373425,
+							"parameters": {
+								"instance-variable": "sizeUp",
+								"value": "0"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 551474627950383,
+							"parameters": {
+								"audio-file": "Powerup 6",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 397040494913892
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Confusion",
+							"sid": 188512801340466,
+							"parameters": {
+								"object": "Paddle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 590410321367051,
+							"parameters": {
+								"audio-file": "Powerup 6",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Paddle",
+							"sid": 980324663958288,
+							"parameters": {
+								"instance-variable": "confusion",
+								"value": "PowerupDefaultTime"
+							}
+						}
+					],
+					"sid": 139469285344709
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Multiball",
+							"sid": 939909810486100,
+							"parameters": {
+								"object": "Paddle"
+							}
+						},
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 266747896032264,
+							"parameters": {
+								"count": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 126582918929220,
+							"parameters": {
+								"audio-file": "Powerup 10",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 580939067171454,
+							"parameters": {
+								"object-to-create": "Ball",
+								"layer": "\"Stage Elements\"",
+								"x": "Paddle.X",
+								"y": "Paddle.Y - 32",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 471500233878991,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-last-created",
+									"objectClass": "System",
+									"sid": 644072014239933,
+									"parameters": {
+										"object": "Ball"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-angle-of-motion",
+									"objectClass": "Ball",
+									"sid": 828325251695478,
+									"behaviorType": "Bullet",
+									"parameters": {
+										"angle": "270 + random(-45, 45)"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "Ball",
+									"sid": 168401190619482,
+									"parameters": {
+										"animation": "BallAnimation",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 719773969680597
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "SpeedDown",
+							"sid": 475463694509639,
+							"parameters": {
+								"object": "Paddle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 646353880497271,
+							"parameters": {
+								"audio-file": "Powerup 10",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Ball",
+							"sid": 732226033679324,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "max(600, Ball.Bullet.Speed - 200)"
+							}
+						}
+					],
+					"sid": 396614158127215
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "SpeedUp",
+							"sid": 181976622408173,
+							"parameters": {
+								"object": "Paddle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 318278818873653,
+							"parameters": {
+								"audio-file": "Powerup 6",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Ball",
+							"sid": 636155191489749,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "Ball.Bullet.Speed + 200"
+							}
+						}
+					],
+					"sid": 479129980902032
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "DamageUp",
+							"sid": 387666634533257,
+							"parameters": {
+								"object": "Paddle"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 267419238460708,
+							"parameters": {
+								"audio-file": "Powerup 10",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Paddle",
+							"sid": 251297195602139,
+							"parameters": {
+								"instance-variable": "damageUp",
+								"value": "PowerupDefaultTime"
+							}
+						}
+					],
+					"sid": 400686459487488
+				}
+			],
+			"sid": 239862884408103
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Paddle",
+			"description": "Management of paddle state and collision events.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Paddle",
+							"sid": 751591875976037,
+							"parameters": {
+								"object": "Ball"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle-of-motion",
+							"objectClass": "Ball",
+							"sid": 441982091483914,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"angle": "-90 + ((Ball.X - Paddle.X) / (Paddle.Width / 2)) * PaddleBounceMaxAngle"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Ball",
+							"sid": 570190859370487,
+							"behaviorType": "Rotate",
+							"parameters": {
+								"speed": "random(-360, 360)"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 330674568944962,
+							"parameters": {
+								"audio-file": "Jump 5",
+								"loop": "not-looping",
+								"volume": "-20",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 270303222276500
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 516556651708318
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Paddle",
+							"sid": 809004870619709,
+							"parameters": {
+								"instance-variable": "autoAim",
+								"value": "dt"
+							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Paddle",
+							"sid": 261764746192238,
+							"parameters": {
+								"instance-variable": "confusion",
+								"value": "dt"
+							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Paddle",
+							"sid": 933159488001062,
+							"parameters": {
+								"instance-variable": "sizeDown",
+								"value": "dt"
+							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Paddle",
+							"sid": 657109233914013,
+							"parameters": {
+								"instance-variable": "sizeUp",
+								"value": "dt"
+							}
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Paddle",
+							"sid": 542827786055268,
+							"parameters": {
+								"instance-variable": "damageUp",
+								"value": "dt"
+							}
+						}
+					],
+					"sid": 207712123378526
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Paddle",
+							"sid": 441878748534096,
+							"parameters": {
+								"instance-variable": "sizeUp",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "Paddle",
+							"sid": 285871344222412,
+							"parameters": {
+								"width": "PaddleDefaultSize * 2"
+							}
+						}
+					],
+					"sid": 308318737156423
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Paddle",
+							"sid": 996012943266080,
+							"parameters": {
+								"instance-variable": "sizeDown",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "Paddle",
+							"sid": 124545158726791,
+							"parameters": {
+								"width": "PaddleDefaultSize / 2"
+							}
+						}
+					],
+					"sid": 688244379971005
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Paddle",
+							"sid": 283978420574417,
+							"parameters": {
+								"instance-variable": "sizeUp",
+								"comparison": 3,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Paddle",
+							"sid": 418671568319664,
+							"parameters": {
+								"instance-variable": "sizeDown",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "Paddle",
+							"sid": 635922807626702,
+							"parameters": {
+								"width": "PaddleDefaultSize"
+							}
+						}
+					],
+					"sid": 222908803689638
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Paddle",
+							"sid": 766589529279046,
+							"parameters": {
+								"instance-variable": "confusion",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "Paddle",
+							"sid": 982490791307095,
+							"parameters": {
+								"mode": "enable",
+								"effect": "\"Water\""
+							}
+						},
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "Ball",
+							"sid": 727823165085248,
+							"parameters": {
+								"mode": "enable",
+								"effect": "\"Water\""
+							}
+						}
+					],
+					"sid": 674236098913824
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Paddle",
+							"sid": 558799515192048,
+							"parameters": {
+								"instance-variable": "confusion",
+								"comparison": 4,
+								"value": "0"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "Paddle",
+							"sid": 707536632069694,
+							"parameters": {
+								"mode": "disable",
+								"effect": "\"Water\""
+							}
+						},
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "Ball",
+							"sid": 567140250623221,
+							"parameters": {
+								"mode": "disable",
+								"effect": "\"Water\""
+							}
+						}
+					],
+					"sid": 272548337436622
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Paddle",
+							"sid": 313974053433124,
+							"parameters": {
+								"instance-variable": "damageUp",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "Ball",
+							"sid": 717536124645514,
+							"parameters": {
+								"color": "rgbEx(255, 180, 180)"
+							}
+						}
+					],
+					"sid": 539519020280158,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Paddle",
+							"sid": 340339946045364,
+							"parameters": {
+								"instance-variable": "damageUp",
+								"comparison": 4,
+								"value": "0"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "Ball",
+							"sid": 623145359929709,
+							"parameters": {
+								"color": "rgbEx(255, 255, 255)"
+							}
+						}
+					],
+					"sid": 266723420215933,
+					"disabled": true
+				}
+			],
+			"sid": 329763841857505
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Layout Setup",
+			"description": "Initial events to run when setting up the layout. Includes spawn info for paddle and ball.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 982221399271103
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 947426694072706,
+							"parameters": {
+								"object-to-create": "Paddle",
+								"layer": "\"Stage Elements\"",
+								"x": "LayoutWidth / 2",
+								"y": "1050",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"callFunction": "Create Ball",
+							"sid": 943935845247958
+						}
+					],
+					"sid": 381731587772139
+				}
+			],
+			"sid": 960683068872769
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 988181319873117,
+					"parameters": {
+						"first-value": "BasicBrick.Count",
+						"comparison": 3,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 382749253432016
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "WinGame",
+					"sid": 279149738107090
+				}
+			],
+			"sid": 682715452185857
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 594538235231401
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "ScoreText",
+					"sid": 809456358398605,
+					"parameters": {
+						"text": "\"[b]Score:[/b] \" & Score"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "LivesText",
+					"sid": 426340948054834,
+					"parameters": {
+						"text": "\"[b]Lives:[/b] \" & Lives"
+					}
+				}
+			],
+			"sid": 894961747353906
+		},
+		{
+			"functionName": "WinGame",
+			"functionDescription": "Clean up arena and show game summary.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "WinText",
+					"sid": 282146932953805,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "ScoreSummary",
+					"sid": 153625594725221,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "ScoreSummary",
+					"sid": 214907327097595,
+					"parameters": {
+						"text": "\"[b]Time to Escape:[/b] \" & round(TimeToEscape) & \" seconds\" & newline & newline & \"[b]Score:[/b] \" & Score"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Ball",
+					"sid": 199729422950562
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Paddle",
+					"sid": 490962435811812
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Pickups",
+					"sid": 615477617890849
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 108112394423262,
+					"parameters": {
+						"audio-file": "Powerup 14",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 266671474897088,
+					"parameters": {
+						"seconds": "5"
+					}
+				},
+				{
+					"callFunction": "ResetGame",
+					"sid": 416120697168272
+				}
+			],
+			"sid": 624692742729802
+		}
+	],
+	"sid": 576136771227806
+}

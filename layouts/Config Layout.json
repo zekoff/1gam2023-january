@@ -1,0 +1,216 @@
+{
+	"name": "Config Layout",
+	"layers": [
+		{
+			"name": "Layer 0",
+			"overriden": 0,
+			"subLayers": [],
+			"instances": [
+				{
+					"type": "Ball",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Gorilla",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 2,
+					"instanceVariables": {},
+					"behaviors": {
+						"Bullet": {
+							"properties": {
+								"speed": 600,
+								"acceleration": 5,
+								"gravity": 0,
+								"bounce-off-solids": true,
+								"set-angle": false,
+								"step": true,
+								"enabled": true
+							}
+						},
+						"Rotate": {
+							"properties": {
+								"speed": 30,
+								"acceleration": 0,
+								"enabled": true,
+								"live-preview": false
+							}
+						}
+					},
+					"effects": {
+						"Water": {
+							"isEnabled": false,
+							"parameters": {
+								"speed": 0.1,
+								"x-speed": 0.3,
+								"y-speed": 0.3,
+								"intensity": 3,
+								"frequency": 4,
+								"angle": 7,
+								"delta": 10,
+								"reflectivity": 400,
+								"emboss": 0.3
+							}
+						}
+					},
+					"world": {
+						"x": 381,
+						"y": 430,
+						"width": 49.10358133498556,
+						"height": 48.43621046674993,
+						"originX": 0.5190839694656488,
+						"originY": 0.5037593984962406,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 1.0471975511965976,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Paddle",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 3,
+					"instanceVariables": {
+						"sizeUp": 0,
+						"damageUp": 0,
+						"confusion": 0,
+						"sizeDown": 0,
+						"autoAim": 0
+					},
+					"behaviors": {
+						"BoundToLayout": {
+							"properties": {
+								"bound-by": "origin"
+							}
+						}
+					},
+					"effects": {
+						"Water": {
+							"isEnabled": false,
+							"parameters": {
+								"speed": 0.1,
+								"x-speed": 0.3,
+								"y-speed": 0.3,
+								"intensity": 3,
+								"frequency": 4,
+								"angle": 7,
+								"delta": 10,
+								"reflectivity": 400,
+								"emboss": 0.3
+							}
+						}
+					},
+					"world": {
+						"x": 410,
+						"y": 862,
+						"width": 254.99999999999997,
+						"height": 30,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "BrickBreakParticle",
+					"properties": {
+						"rate": 50,
+						"spray-cone": 360,
+						"type": "one-shot",
+						"object": -1,
+						"live-preview": false,
+						"speed": 50,
+						"size": 24,
+						"opacity": 50,
+						"grow-rate": 0,
+						"x-randomiser": 8,
+						"y-randomiser": 8,
+						"initial-speed-randomiser": 50,
+						"size-randomiser": 16,
+						"grow-rate-randomiser": 0,
+						"acceleration": -50,
+						"gravity": 100,
+						"angle-randomiser": 90,
+						"life-speed-randomiser": 800,
+						"opacity-randomiser": 0,
+						"destroy-mode": "fade-to-invisible",
+						"timeout": 0.5
+					},
+					"uid": 6,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 435,
+						"y": 682,
+						"width": 100,
+						"height": 100,
+						"originX": 0,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 1
+					}
+				}
+			],
+			"sid": 142968887890701,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"isInitiallyInteractive": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				1,
+				1,
+				1,
+				1
+			],
+			"isTransparent": false,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
+		}
+	],
+	"sid": 690764984654655,
+	"nonworld-instances": [],
+	"effectTypes": [],
+	"width": 1440,
+	"height": 2560,
+	"unboundedScrolling": false,
+	"vpX": 0.5,
+	"vpY": 0.5,
+	"projection": "perspective",
+	"eventSheet": null
+}

@@ -1,0 +1,28 @@
+{
+	"name": "Bricks",
+	"plugin-id": "Sprite",
+	"sid": 477970098514739,
+	"instanceVariables": [
+		{
+			"name": "MaxHp",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 402001184101394
+		},
+		{
+			"name": "CurrentHp",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 718196506158457
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"BasicBrick",
+		"SoftBrick",
+		"HardBrick"
+	]
+}

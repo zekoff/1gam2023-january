@@ -1,0 +1,445 @@
+{
+	"projectFormatVersion": 1,
+	"savedWithRelease": 32702,
+	"name": "1gam-2023-breakout",
+	"runtime": "c3",
+	"useWorker": "auto",
+	"bundleAddons": false,
+	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "AdvancedRandom",
+			"name": "Advanced Random",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "NinePatch",
+			"name": "9-patch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Particles",
+			"name": "Particles",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Bullet",
+			"name": "Bullet",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Rotate",
+			"name": "Rotate",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "bound",
+			"name": "Bound to layout",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "destroy",
+			"name": "Destroy outside layout",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "water",
+			"name": "Water",
+			"author": "Viktor Korsun",
+			"bundled": false
+		}
+	],
+	"uniqueId": "3ialyi5qcaz",
+	"objectTypes": {
+		"items": [
+			"WinText",
+			"AdvancedRandom",
+			"Audio",
+			"ScoreText",
+			"BottomUi",
+			"LivesText",
+			"LoseText",
+			"TitleText",
+			"AnimalSelectButton",
+			"InstructionText",
+			"ScoreSummary"
+		],
+		"subfolders": [
+			{
+				"items": [
+					"Mouse",
+					"Touch"
+				],
+				"subfolders": [],
+				"name": "Controls"
+			},
+			{
+				"items": [
+					"Ball",
+					"InvisibleWall",
+					"Paddle",
+					"BrickBreakParticle",
+					"TiledBackground",
+					"DeathWall",
+					"WinWall"
+				],
+				"subfolders": [
+					{
+						"items": [
+							"BasicBrick",
+							"SoftBrick",
+							"HardBrick"
+						],
+						"subfolders": [],
+						"name": "Bricks"
+					},
+					{
+						"items": [
+							"PaddleSizeUp",
+							"Star",
+							"BasicPickup",
+							"PaddleSizeDown",
+							"Confusion",
+							"Multiball",
+							"AutoAim",
+							"SpeedUp",
+							"SpeedDown",
+							"DamageUp",
+							"FallProtection"
+						],
+						"subfolders": [],
+						"name": "Pickups"
+					}
+				],
+				"name": "Game Entities"
+			}
+		]
+	},
+	"autosaveData": null,
+	"containers": [],
+	"families": {
+		"items": [
+			"Bricks",
+			"Pickups"
+		],
+		"subfolders": []
+	},
+	"layouts": {
+		"items": [
+			"Main Game Arena",
+			"Config Layout",
+			"Title Screen"
+		],
+		"subfolders": []
+	},
+	"eventSheets": {
+		"items": [
+			"Game Events",
+			"Helper Functions",
+			"Main Arena Events",
+			"Title Screen Events"
+		],
+		"subfolders": []
+	},
+	"rootFileFolders": {
+		"script": {
+			"items": [
+				{
+					"name": "main.js",
+					"type": "application/javascript",
+					"sid": 884964464465953,
+					"script-info": {
+						"purpose": "main"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"sound": {
+			"items": [
+				{
+					"name": "Pickup_coin 7.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 466658782288016,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Jump 5.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 450159797099506,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Hit_hurt 18.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 806156194545908,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup 6.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 350508824073701,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup 10.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 384957326861254,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Powerup 14.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 287097777656043,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Hit_hurt 21.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 609644048562218,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"music": {
+			"items": [
+				{
+					"name": "BeepBox-Song.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 597970504886815,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"video": {
+			"items": [],
+			"subfolders": []
+		},
+		"font": {
+			"items": [
+				{
+					"name": "kenney_high-webfont.woff",
+					"type": "application/font-woff",
+					"sid": 399951292340409,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"icon": {
+			"items": [
+				{
+					"name": "icon-16.png",
+					"type": "image/png",
+					"sid": 734072240668096,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-32.png",
+					"type": "image/png",
+					"sid": 463231519245346,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-64.png",
+					"type": "image/png",
+					"sid": 467800776509529,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-128.png",
+					"type": "image/png",
+					"sid": 540885135838629,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "loading-logo.png",
+					"type": "image/png",
+					"sid": 161783325189519,
+					"icon-info": {
+						"purpose": "loading-logo"
+					}
+				},
+				{
+					"name": "icon-512.png",
+					"type": "image/png",
+					"sid": 668908058266966,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-256.png",
+					"type": "image/png",
+					"sid": 470933205305599,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"general": {
+			"items": [],
+			"subfolders": []
+		}
+	},
+	"timelines": {
+		"items": [
+			"Timeline 1"
+		],
+		"subfolders": [
+			{
+				"items": [],
+				"subfolders": []
+			}
+		]
+	},
+	"properties": {
+		"description": "",
+		"version": "1.0.0.0",
+		"author": "",
+		"authorEmail": "",
+		"authorWebsite": "",
+		"appId": "",
+		"pixelRounding": true,
+		"zAxisScale": "normalized",
+		"fov": 0.7853981633974483,
+		"useLoaderLayout": false,
+		"fullscreenMode": "letterbox-scale",
+		"fullscreenQuality": "low",
+		"viewportFit": "auto",
+		"backgroundColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"splashColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"useThemeColor": false,
+		"themeColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"orientations": "portrait",
+		"webgpu": "auto",
+		"gpuPreference": "high-performance",
+		"scriptsType": "module",
+		"framerateMode": "vsync",
+		"compositingMode": "standard",
+		"sampling": "nearest",
+		"downscaling": "medium",
+		"renderingMode": "auto",
+		"anisotropicFiltering": "auto",
+		"zNear": 1,
+		"zFar": 10000,
+		"maxSpriteSheetSize": 2048,
+		"loaderStyle": "percent",
+		"preloadSounds": true,
+		"cordovaiOSScheme": "app",
+		"cordovaAndroidScheme": "https",
+		"autoReloadScriptsOnPreview": false,
+		"exportFileStructure": "folders"
+	},
+	"viewportWidth": 720,
+	"viewportHeight": 1280,
+	"firstLayout": "Title Screen"
+}

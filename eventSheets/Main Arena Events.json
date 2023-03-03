@@ -1,0 +1,59 @@
+{
+	"name": "Main Arena Events",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "TimeToEscape",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Time in seconds between start of level and escape.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 467501394161151
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "Game Events"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 805031423657225
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "Build Basic Layout",
+					"sid": 254318926850785
+				}
+			],
+			"sid": 360950674439359
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 486359225801229
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 862025733412117,
+					"parameters": {
+						"variable": "TimeToEscape",
+						"value": "dt"
+					}
+				}
+			],
+			"sid": 534274487973070
+		}
+	],
+	"sid": 595377975829413
+}

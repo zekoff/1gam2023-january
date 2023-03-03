@@ -1,0 +1,57 @@
+{
+	"name": "Star",
+	"plugin-id": "Sprite",
+	"sid": 475980394597126,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 30,
+						"height": 30,
+						"originX": 0.40350877192982454,
+						"originY": 0.37735849056603776,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2843738,
+						"collisionPoly": {
+							"points": [
+								0.23333333333333334,
+								0.23333333333333334,
+								0.5,
+								0,
+								0.7333333333333333,
+								0.23333333333333334,
+								0.9333333333333333,
+								0.5,
+								0.8333333333333334,
+								0.8333333333333334,
+								0.5,
+								0.9,
+								0.13333333333333333,
+								0.8333333333333334,
+								0.03333333333333333,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 446360124650062,
+				"name": "Animation 1",
+				"isLooping": true,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -1,0 +1,319 @@
+{
+	"name": "Helper Functions",
+	"events": [
+		{
+			"functionName": "Build Basic Layout",
+			"functionDescription": "Fill the game area with standard bricks.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "const gridOffset = 8;\nfor (let row = 0; row < 8; row++) {\n\tfor (let col = 0; col < 11; col++) {\n\t\tconst newBrick = runtime.objects.BasicBrick.createInstance(\n\t\t\t\"Bricks\",\n\t\t\tcol * 64 + 32 + gridOffset,\n\t\t\trow * 64 + 32 + gridOffset\n\t\t);\n\t\tlet maxHp = 1;\n\t\tconst toughBrick = Math.random();\n\t\tif (toughBrick > .7) maxHp = 2;\n\t\tif (toughBrick > .9) maxHp = 3;\n\t\tnewBrick.instVars.MaxHp = maxHp;\n\t\tnewBrick.instVars.CurrentHp = maxHp;\n// \t\tnewBrick.colorRgb = [Math.random() / 10 + .9, Math.random() / 10 + .9, Math.random() / 10 + .9];\n\t\tnewBrick.colorRgb = [1, 1, 1];\n\t\tif (maxHp == 2) newBrick.colorRgb = [.6, .7, .6];\n\t\tif (maxHp == 3) newBrick.colorRgb = [.4, .3, .3];\t\t\n\t}\n}"
+				}
+			],
+			"sid": 774426307478411
+		},
+		{
+			"functionName": "Create Ball",
+			"functionDescription": "Create a new ball with reasonable parameters.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 507470185805433,
+					"parameters": {
+						"object-to-create": "Ball",
+						"layer": "\"Stage Elements\"",
+						"x": "LayoutWidth / 2",
+						"y": "950",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				}
+			],
+			"sid": 414721330151120,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-last-created",
+							"objectClass": "System",
+							"sid": 711225725292576,
+							"parameters": {
+								"object": "Ball"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle-of-motion",
+							"objectClass": "Ball",
+							"sid": 459055911027658,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"angle": "270 + random(-45, 45)"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Ball",
+							"sid": 524984884051426,
+							"parameters": {
+								"animation": "BallAnimation",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Ball",
+							"sid": 919239053509758,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "BallDefaultSpeed"
+							}
+						}
+					],
+					"sid": 786414003099255
+				}
+			]
+		},
+		{
+			"functionName": "Drop Pickup",
+			"functionDescription": "Choose a random pickup and drop it from the picked object.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": true,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 256928527858552,
+					"disabled": true,
+					"parameters": {
+						"object-to-create": "Pickups",
+						"layer": "0",
+						"x": "Bricks.X",
+						"y": "Bricks.Y",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "createProbabilityTable",
+					"objectClass": "AdvancedRandom",
+					"sid": 422580635860417,
+					"parameters": {
+						"name": "\"PickupProbability\""
+					}
+				},
+				{
+					"id": "setProbabilityTable",
+					"objectClass": "AdvancedRandom",
+					"sid": 352589630221985,
+					"parameters": {
+						"name": "\"PickupProbability\""
+					}
+				},
+				{
+					"id": "addProbabilityEntry",
+					"objectClass": "AdvancedRandom",
+					"sid": 183091089864484,
+					"parameters": {
+						"value": "\"Star\"",
+						"weight": "3"
+					}
+				},
+				{
+					"id": "addProbabilityEntry",
+					"objectClass": "AdvancedRandom",
+					"sid": 417601213823115,
+					"parameters": {
+						"value": "\"PaddleSizeUp\"",
+						"weight": "1"
+					}
+				},
+				{
+					"id": "addProbabilityEntry",
+					"objectClass": "AdvancedRandom",
+					"sid": 239528152629973,
+					"parameters": {
+						"value": "\"PaddleSizeDown\"",
+						"weight": "1"
+					}
+				},
+				{
+					"id": "addProbabilityEntry",
+					"objectClass": "AdvancedRandom",
+					"sid": 872506155336503,
+					"parameters": {
+						"value": "\"Confusion\"",
+						"weight": "1"
+					}
+				},
+				{
+					"id": "addProbabilityEntry",
+					"objectClass": "AdvancedRandom",
+					"sid": 659479009179111,
+					"parameters": {
+						"value": "\"Multiball\"",
+						"weight": "1"
+					}
+				},
+				{
+					"id": "addProbabilityEntry",
+					"objectClass": "AdvancedRandom",
+					"sid": 855859033706466,
+					"parameters": {
+						"value": "\"SpeedUp\"",
+						"weight": "1"
+					}
+				},
+				{
+					"id": "addProbabilityEntry",
+					"objectClass": "AdvancedRandom",
+					"sid": 193872854394673,
+					"parameters": {
+						"value": "\"SpeedDown\"",
+						"weight": "1"
+					}
+				},
+				{
+					"id": "addProbabilityEntry",
+					"objectClass": "AdvancedRandom",
+					"sid": 809464197581118,
+					"parameters": {
+						"value": "\"DamageUp\"",
+						"weight": "1"
+					}
+				},
+				{
+					"id": "create-object-by-name",
+					"objectClass": "System",
+					"sid": 690698257434655,
+					"parameters": {
+						"object-name": "AdvancedRandom.Weighted",
+						"layer": "\"Stage Elements\"",
+						"x": "Bricks.X",
+						"y": "Bricks.Y",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				}
+			],
+			"sid": 779269192170960,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-last-created",
+							"objectClass": "System",
+							"sid": 428852187767099,
+							"parameters": {
+								"object": "Pickups"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-speed",
+							"objectClass": "Pickups",
+							"sid": 452199491384579,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "1"
+							}
+						},
+						{
+							"id": "set-acceleration",
+							"objectClass": "Pickups",
+							"sid": 311903235736653,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"acceleration": "80"
+							}
+						},
+						{
+							"id": "set-angle-of-motion",
+							"objectClass": "Pickups",
+							"sid": 874893250720000,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"angle": "90 + random(-10, 10)"
+							}
+						}
+					],
+					"sid": 726513015448838
+				}
+			]
+		},
+		{
+			"functionName": "ResetGame",
+			"functionDescription": "Reset game variables and go to title screen.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 896115534151389,
+					"parameters": {
+						"variable": "Lives",
+						"value": "2"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 370202944495939,
+					"parameters": {
+						"variable": "Score",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 647816382838200,
+					"parameters": {
+						"variable": "TimeToEscape",
+						"value": "0"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 121754026479775,
+					"parameters": {
+						"layout": "Title Screen"
+					}
+				}
+			],
+			"sid": 294259523109220
+		}
+	],
+	"sid": 515861734043769
+}

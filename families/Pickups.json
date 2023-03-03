@@ -1,0 +1,32 @@
+{
+	"name": "Pickups",
+	"plugin-id": "Sprite",
+	"sid": 610840264900798,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 607755994403726
+		},
+		{
+			"behaviorId": "destroy",
+			"name": "DestroyOutsideLayout",
+			"sid": 290558812114835
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"PaddleSizeUp",
+		"Star",
+		"BasicPickup",
+		"PaddleSizeDown",
+		"Confusion",
+		"Multiball",
+		"AutoAim",
+		"SpeedUp",
+		"SpeedDown",
+		"DamageUp",
+		"FallProtection"
+	]
+}

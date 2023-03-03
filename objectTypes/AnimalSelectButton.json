@@ -1,0 +1,288 @@
+{
+	"name": "AnimalSelectButton",
+	"plugin-id": "Sprite",
+	"sid": 780298382462211,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 174,
+						"height": 128,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2105424,
+						"collisionPoly": {
+							"points": [
+								0.12643678160919541,
+								0.171875,
+								0.5,
+								0,
+								0.867816091954023,
+								0.171875,
+								0.9770114942528736,
+								0.5,
+								0.8160919540229885,
+								0.75,
+								0.5,
+								0.9921875,
+								0.1781609195402299,
+								0.75,
+								0.017241379310344827,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 484955817092870,
+				"name": "Monkey",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 154,
+						"height": 162,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3245708,
+						"collisionPoly": {
+							"points": [
+								0.2792207792207792,
+								0.2654320987654321,
+								0.5,
+								0.20987654320987653,
+								0.7142857142857143,
+								0.2654320987654321,
+								0.8961038961038961,
+								0.5,
+								0.8246753246753247,
+								0.8333333333333334,
+								0.5,
+								0.9938271604938271,
+								0.16883116883116883,
+								0.8333333333333334,
+								0.09740259740259741,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 926799562908612,
+				"name": "Giraffe",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 140,
+						"height": 128,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 9092780,
+						"collisionPoly": {
+							"points": [
+								0.15714285714285714,
+								0.171875,
+								0.5,
+								0,
+								0.8428571428571429,
+								0.1640625,
+								0.95,
+								0.5,
+								0.8928571428571429,
+								0.8828125,
+								0.5,
+								0.9921875,
+								0.1,
+								0.8828125,
+								0.04285714285714286,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 808182931406669,
+				"name": "Penguin",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 128,
+						"height": 142,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3197223,
+						"collisionPoly": {
+							"points": [
+								0.1484375,
+								0.13380281690140844,
+								0.5,
+								0,
+								0.84375,
+								0.13380281690140844,
+								0.9921875,
+								0.5,
+								0.7890625,
+								0.8098591549295775,
+								0.5,
+								0.9366197183098591,
+								0.203125,
+								0.8098591549295775,
+								0,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 292286477651996,
+				"name": "Snake",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 128,
+						"height": 141,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 8609946,
+						"collisionPoly": {
+							"points": [
+								0.109375,
+								0.09929078014184398,
+								0.5,
+								0.04964539007092199,
+								0.8828125,
+								0.09929078014184398,
+								0.9921875,
+								0.5,
+								0.84375,
+								0.8581560283687943,
+								0.5,
+								0.9929078014184397,
+								0.1484375,
+								0.8581560283687943,
+								0,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 421015177984217,
+				"name": "Zebra",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 129,
+						"height": 128,
+						"originX": 0.5190839694656488,
+						"originY": 0.5037593984962406,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1866381,
+						"collisionPoly": {
+							"points": [
+								0.15267175572519084,
+								0.15037593984962405,
+								0.3033449595211116,
+								0.045204564144736836,
+								0.5,
+								0.007518796992481203,
+								0.7139237964426286,
+								0.05263272622474152,
+								0.8396946564885496,
+								0.15037593984962405,
+								0.9504382883319418,
+								0.3104892816758694,
+								0.9847328244274809,
+								0.5,
+								0.9456486592765986,
+								0.6942794914532423,
+								0.8396946564885496,
+								0.8421052631578947,
+								0.6868395623359971,
+								0.9413309886043231,
+								0.5,
+								0.9849624060150376,
+								0.3085201350787213,
+								0.9489640544231671,
+								0.15267175572519084,
+								0.8421052631578947,
+								0.05360622260406728,
+								0.7050161720218513,
+								0.007633587786259542,
+								0.5,
+								0.05032173913853772,
+								0.3024723368479794
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 750777162047535,
+				"name": "Gorilla",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

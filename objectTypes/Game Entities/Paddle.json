@@ -1,0 +1,104 @@
+{
+	"name": "Paddle",
+	"plugin-id": "Sprite",
+	"sid": 617575438870848,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "sizeUp",
+			"type": "number",
+			"desc": "Seconds remaining of Paddle Size Up powerup.",
+			"show": true,
+			"sid": 695475006687644
+		},
+		{
+			"name": "damageUp",
+			"type": "number",
+			"desc": "Seconds remaining of damage increase powerup.",
+			"show": true,
+			"sid": 462970715661200
+		},
+		{
+			"name": "confusion",
+			"type": "number",
+			"desc": "Seconds remaining of confusion debuff.",
+			"show": true,
+			"sid": 239212479711820
+		},
+		{
+			"name": "sizeDown",
+			"type": "number",
+			"desc": "Seconds remaining of size down debuff.",
+			"show": true,
+			"sid": 219367748551470
+		},
+		{
+			"name": "autoAim",
+			"type": "number",
+			"desc": "Seconds remaining of auto-aim powerup.",
+			"show": true,
+			"sid": 166145987353382
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "bound",
+			"name": "BoundToLayout",
+			"sid": 628088686518451
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "water",
+			"name": "Water"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 200,
+						"height": 50,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 9033826,
+						"collisionPoly": {
+							"points": [
+								0.01,
+								0.04,
+								0.5,
+								0.04,
+								0.985,
+								0.04,
+								0.985,
+								0.5,
+								0.985,
+								0.94,
+								0.5,
+								0.94,
+								0.01,
+								0.94,
+								0.01,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 242589609063110,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

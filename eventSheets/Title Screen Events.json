@@ -1,0 +1,64 @@
+{
+	"name": "Title Screen Events",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 619307562531160,
+					"parameters": {
+						"object": "AnimalSelectButton"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 242820619998490,
+					"parameters": {
+						"variable": "BallAnimation",
+						"value": "AnimalSelectButton.AnimationName"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 249216907200129,
+					"parameters": {
+						"layout": "Main Game Arena"
+					}
+				}
+			],
+			"sid": 236660095499413
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 920102451955078
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 514958495612928,
+					"parameters": {
+						"audio-file": "BeepBox-Song",
+						"loop": "looping",
+						"volume": "-10",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
+			"sid": 692852580606526
+		}
+	],
+	"sid": 434738594603255
+}
